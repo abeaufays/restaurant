@@ -1,6 +1,9 @@
-def main():
-    print("Hello from restaurant!")
+from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
+
+app = FastAPI()
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/hello", response_class=PlainTextResponse)
+def hello():
+    return "Hello from FastAPI!"
