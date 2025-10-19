@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from fastapi.responses import PlainTextResponse
+from src.routers import items, users, events
 
 app = FastAPI()
 
-
-@app.get("/hello", response_class=PlainTextResponse)
-def hello():
-    return "Hello from FastAPI!"
+# Include routers
+app.include_router(items.router)
+app.include_router(users.router)
+app.include_router(events.router)
