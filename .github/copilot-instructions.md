@@ -5,17 +5,24 @@
 - Source code is located in the `src/` directory. The main entry point is `src/main.py`.
 - Project configuration is managed via `pyproject.toml` in the root directory.
 
-## Architecture & Structure
-- All executable code is in `src/`. There are currently no submodules or packages.
+## Project Purpose
+- Build a restaurant event management application where users can create events, invite participants, and manage available food/drink items.
+- Domain models: Item, User, Event (see models-breakdown.md for details).
 
 ## Copilot Preferences
 - Use `uv run` for running Python scripts.
 - Use `uv add` to add dependencies.
 - Use `uv remove` to remove dependencies.
+- Before implementing features, confirm the approach with the user.
+- Keep implementations minimal and modular.
 - Reference this file for any workspace-specific instructions or preferences.
-- Ask for more context and confirmation before starting processes. 
-
-## Patterns & Conventions
-- No custom patterns or advanced architecture yet; follow standard Python practices for new modules.
-- If you add new features, keep them modular and place them in `src/`.
 - Update `README.md` and this file with any new conventions or workflows as the project evolves.
+
+
+## Development Workflow
+- Use FastAPI for REST endpoints.
+- Store data models in `src/models.py` (or specify your preferred structure).
+
+## Testing & Quality
+- Testing framework: pytest
+- Code style: ruff
