@@ -1,4 +1,18 @@
+## Note
+
+This is a toy project to try AI-driven development.  
+Almost everything was written by AI, except for this section of the README and some instructions `.md` files.  
+Commit messages will sometimes contain comments on what was done by AI or not. 
+
 ## Restaurant Project
+
+A restaurant event management application built with FastAPI where users can create events, invite participants, and manage available food/drink items.
+
+### Features
+
+- **Items Management**: Create and list menu items (meals, drinks, food)
+- **User Management**: Create and list users with email validation
+- **Event Management**: Create and list events with available items and participants
 
 ### Project Structure
 
@@ -6,14 +20,61 @@
 restaurant/
 ├── pyproject.toml
 ├── README.md
+├── models-breakdown.md
 └── src/
-	└── main.py
+    └── restaurant/
+        ├── __init__.py
+        ├── main.py
+        ├── models.py
+        └── routers/
+            ├── __init__.py
+            ├── items.py
+            ├── users.py
+            └── events.py
 ```
+
+### Technology Stack
+
+- **Python**: 3.13+
+- **FastAPI**: Web framework
+- **Pydantic**: Data validation with email support
+- **Uvicorn**: ASGI server
+- **UV**: Package and dependency management
 
 ### How to Run
 
-Run the main entry point:
+Start the FastAPI development server:
 
 ```bash
-python src/main.py
+uv run uvicorn restaurant.main:app --reload
+```
+
+The server will start on `http://127.0.0.1:8000`
+
+### API Documentation
+
+Once the server is running, access:
+- **Interactive API docs**: http://127.0.0.1:8000/docs
+- **Alternative docs**: http://127.0.0.1:8000/redoc
+
+### Available Endpoints
+
+- **Items**: `GET /items`, `POST /items`
+- **Users**: `GET /users`, `POST /users`
+- **Events**: `GET /events`, `POST /events`
+
+### Domain Models
+
+See `models-breakdown.md` for detailed domain model specifications.
+
+### Development
+
+Add dependencies:
+```bash
+uv add <package>
+```
+
+Remove dependencies:
+```bash
+uv remove <package>
 ```
