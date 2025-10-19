@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.models import Event
+from restaurant.models import Event
 
 router = APIRouter(prefix="/events", tags=["events"])
 

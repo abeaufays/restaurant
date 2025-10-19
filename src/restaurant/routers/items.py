@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.models import Item
+from restaurant.models import Item
 
 router = APIRouter(prefix="/items", tags=["items"])
 
