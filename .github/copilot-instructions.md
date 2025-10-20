@@ -26,6 +26,14 @@
 - Use FastAPI for REST endpoints.
 - Store data models in `src/models.py` (or specify your preferred structure).
 
+## Import Conventions
+- **Import modules, not classes/functions** from internal `restaurant` package
+  - ✅ `from restaurant import schemas, models, database`
+  - ❌ `from restaurant.schemas import Item`
+- Use fully qualified names: `schemas.Item`, `models.Item`, `database.get_db()`
+- **Exception:** Common standard library imports are allowed (e.g., `from typing import List, Any`)
+- Third-party framework imports can be direct (e.g., `from fastapi import APIRouter, Depends`)
+
 ## Testing & Quality
 - Testing framework: pytest
 - Code style: ruff

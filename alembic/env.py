@@ -5,8 +5,7 @@ from sqlalchemy import pool
 from dotenv import load_dotenv
 
 from alembic import context
-from restaurant.database import Base, DATABASE_URL
-from restaurant import models  # Import models to register them with Base  # noqa: F401
+from restaurant import database, models  # noqa: F401
 
 # Load environment variables from env file
 load_dotenv("env")
@@ -16,8 +15,8 @@ load_dotenv("env")
 config = context.config
 
 # Set the database URL from environment variable
-if DATABASE_URL:
-    config.set_main_option("sqlalchemy.url", DATABASE_URL)
+if database.DATABASE_URL:
+    config.set_main_option("sqlalchemy.url", database.DATABASE_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -28,7 +27,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # Import all models here to ensure they are registered with Base
 # from restaurant import models  # Add this when you create SQLAlchemy models
-target_metadata = Base.metadata
+target_metadata = database.Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String
-from restaurant.database import Base
+
+from restaurant import database
 
 
-class Item(Base):
+class Item(database.Base):
     """Database table for items (meals, drinks, food)."""
 
     __tablename__ = "items"

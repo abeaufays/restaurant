@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from restaurant.schemas import Event
+
+from restaurant import schemas
 
 router = APIRouter(prefix="/events", tags=["events"])
 
@@ -11,6 +12,6 @@ def list_events():
 
 
 @router.post("/")
-def create_event(event: Event):
+def create_event(event: schemas.Event):
     """Create a new event."""
     return event

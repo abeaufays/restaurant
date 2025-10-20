@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from restaurant.schemas import User
+
+from restaurant import schemas
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -11,6 +12,6 @@ def list_users():
 
 
 @router.post("/")
-def create_user(user: User):
+def create_user(user: schemas.User):
     """Create a new user."""
     return user
