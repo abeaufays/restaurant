@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 from alembic import context
 from restaurant.database import Base, DATABASE_URL
+from restaurant import models  # Import models to register them with Base  # noqa: F401
 
 # Load environment variables from env file
 load_dotenv("env")
