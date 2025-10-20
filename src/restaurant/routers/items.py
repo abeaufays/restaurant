@@ -8,9 +8,10 @@ router = APIRouter(prefix="/items", tags=["items"])
 
 
 @router.get("/")
-def list_items():
+def list_items(db: Session = Depends(get_db)):
     """List all items."""
-    return {"items": []}
+    items = db.query(models.Item).all()
+    return {"items": items}
 
 
 @router.post("/")
