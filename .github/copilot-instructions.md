@@ -20,6 +20,7 @@
 - You may propose helpful additions or improvements, but always ask for confirmation before implementing them.
 - Reference this file for any workspace-specific instructions or preferences.
 - Update `README.md` and this file with any new conventions or workflows as the project evolves.
+- In all interactions and commit messages, **be extremely concise** and sacrifice grammar for the sake of concision
 
 
 ## Development Workflow
