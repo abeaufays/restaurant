@@ -1,4 +1,4 @@
-# Copilot Instructions for AI Coding Agents
+# Instructions for AI Coding Agents
 
 ## Project Overview
 - This is a minimal Python project for a restaurant application.
@@ -9,7 +9,7 @@
 - Build a restaurant event management application where users can create events, invite participants, and manage available food/drink items.
 - Domain models: Item, User, Event (see models-breakdown.md for details).
 
-## Copilot Preferences
+## Agent Preferences
 - Use `uv run` for running Python scripts.
 - Use `uv add` to add dependencies.
 - Use `uv remove` to remove dependencies.
@@ -22,6 +22,12 @@
 - Update `README.md` and this file with any new conventions or workflows as the project evolves.
 - In all interactions, **be extremely concise** and sacrifice grammar for the sake of concision (except when writing commit messages)
 
+
+## Worktree Workflow
+- **ALWAYS** use git worktrees for agent tasks to avoid conflicts.
+- To create a worktree: `python3 scripts/manage_worktree.py create <branch-name>`
+- Worktrees are created in `.worktrees/<branch-name>`.
+- Switch to the worktree directory before starting work: `cd .worktrees/<branch-name>`
 
 ## Development Workflow
 - Use FastAPI for REST endpoints.
