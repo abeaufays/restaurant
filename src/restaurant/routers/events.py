@@ -28,7 +28,8 @@ def create_event(
 ):
     """Create a new event."""
     # Note: This is a placeholder - Event schema needs owner_id instead of owner object
-    db_event = event_repository.create(owner_id=1)  # Temporary hardcoded owner_id
+    """Create a new event."""
+    # Note: This is a placeholder - Event schema needs owner_id instead of owner object
+    event = event_repository.create(owner_id=1)  # Temporary hardcoded owner_id
     db.commit()
-    db.refresh(db_event)
-    return db_event
+    return event
