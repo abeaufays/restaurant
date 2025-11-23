@@ -1,23 +1,20 @@
 import argparse
 import subprocess
-import os
 import sys
 from pathlib import Path
+
 
 def run_command(command, cwd=None):
     try:
         result = subprocess.run(
-            command,
-            cwd=cwd,
-            check=True,
-            text=True,
-            capture_output=True
+            command, cwd=cwd, check=True, text=True, capture_output=True
         )
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Error running command: {' '.join(command)}")
         print(f"Stderr: {e.stderr}")
         sys.exit(1)
+
 
 def create_worktree(branch_name):
     project_root = Path(__file__).parent.parent
@@ -29,13 +26,16 @@ def create_worktree(branch_name):
         return
 
     print(f"Creating worktree for branch '{branch_name}' at {worktree_path}...")
-    
+
     # Create the directory if it doesn't exist (git worktree add will create the leaf dir, but good to be safe with parents)
     worktrees_dir.mkdir(exist_ok=True)
 
     # Check if branch exists
     try:
-        run_command(["git", "show-ref", "--verify", f"refs/heads/{branch_name}"], cwd=project_root)
+        run_command(
+            ["git", "show-ref", "--verify", f"refs/heads/{branch_name}"],
+            cwd=project_root,
+        )
         branch_exists = True
     except SystemExit:
         branch_exists = False
@@ -43,7 +43,7 @@ def create_worktree(branch_name):
     cmd = ["git", "worktree", "add"]
     if not branch_exists:
         cmd.extend(["-b", branch_name])
-    
+
     cmd.append(str(worktree_path))
     if branch_exists:
         cmd.append(branch_name)
@@ -51,10 +51,12 @@ def create_worktree(branch_name):
     run_command(cmd, cwd=project_root)
     print(f"Successfully created worktree at {worktree_path}")
 
+
 def list_worktrees():
     project_root = Path(__file__).parent.parent
     output = run_command(["git", "worktree", "list"], cwd=project_root)
     print(output)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Manage git worktrees for agents.")
@@ -71,6 +73,7 @@ def main():
         create_worktree(args.branch_name)
     elif args.command == "list":
         list_worktrees()
+
 
 if __name__ == "__main__":
     main()
