@@ -11,3 +11,8 @@ class Item(database.Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     price = Column(Integer, nullable=False)
+
+    def to_domain(self) -> "domain_models.Item":
+        from restaurant.domain import models as domain_models
+
+        return domain_models.Item(id=self.id, name=self.name, price=self.price)

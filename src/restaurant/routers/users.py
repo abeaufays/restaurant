@@ -27,7 +27,7 @@ def create_user(
     db: Session = Depends(database.get_db),
 ):
     """Create a new user."""
-    db_user = user_repository.create(name=user.name, email=user.email)
+    """Create a new user."""
+    user = user_repository.create(name=user.name, email=user.email)
     db.commit()
-    db.refresh(db_user)
-    return db_user
+    return user

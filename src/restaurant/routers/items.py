@@ -27,7 +27,7 @@ def create_item(
     db: Session = Depends(database.get_db),
 ):
     """Create a new item."""
-    db_item = item_repository.create(name=item.name, price=item.price)
+    """Create a new item."""
+    item = item_repository.create(name=item.name, price=item.price)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    return item
