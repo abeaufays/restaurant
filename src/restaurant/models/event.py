@@ -17,3 +17,13 @@ class Event(database.Base):
     owner = relationship("User", foreign_keys=[owner_id])
     available_items = relationship("Item", secondary=associations.event_items)
     participants = relationship("User", secondary=associations.event_participants)
+
+    def to_domain(self) -> "domain_models.Event":
+        from restaurant.domain import models as domain_models
+
+        return domain_models.Event(
+            id=self.id,
+            owner=self.owner.to_domain(),
+            available_items=[i.to_domain() for i in self.available_items],
+            participants=[p.to_domain() for p in self.participants],
+        )
